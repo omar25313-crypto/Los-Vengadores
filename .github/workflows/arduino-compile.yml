@@ -1,0 +1,33 @@
+name: Compilar firmware ESP32
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "casco_inteligente/**"
+      - ".github/workflows/arduino-compile.yml"
+  push:
+    branches: [main]
+    paths:
+      - "casco_inteligente/**"
+      - ".github/workflows/arduino-compile.yml"
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Arduino CLI
+        uses: arduino/setup-arduino-cli@v2
+
+      - name: Preparar índice de placas
+        run: arduino-cli core update-index
+
+      - name: Instalar soporte ESP32 de Espressif
+        run: arduino-cli core install esp32:esp32
+
+      - name: Compilar sketch para ESP32 Dev Module
+        run: arduino-cli compile --fqbn esp32:esp32:esp32 casco_inteligente
