@@ -1,6 +1,7 @@
 /*
   Casco inteligente - prototipo inicial ESP32
   Estado: demostración básica del botón y buzzer.
+  Validación automática: GitHub Actions compila este sketch en pull requests.
   No representa todavía una detección de impacto ni una alerta GPS/GSM validada.
 
   Cableado provisional:
