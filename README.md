@@ -23,6 +23,7 @@ Prototipo educativo basado en ESP32. El firmware de esta rama integra una lectur
 - `casco_inteligente/gps_gsm.h/.cpp`: lectura GPS y SMS por SIM800L.
 - `casco_inteligente/configuracion.h.example`: ejemplo para configurar el teléfono sin publicar datos privados.
 - `docs/modulos/integracion-mpu6050-gps-sim800l.md`: cableado provisional, alimentación y pasos de validación.
+- `docs/evidencia/pruebas-previas-notion.md`: enlaces a registros previos de la bitácora de Notion y alcance de lo que respaldan.
 - `docs/evidencias/REGISTRO_DE_PRUEBAS.md`: plantilla de evidencias.
 
 ## Pines provisionales
