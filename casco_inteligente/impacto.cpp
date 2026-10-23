@@ -6,7 +6,8 @@ namespace {
 constexpr uint8_t MPU6050_ADDR = 0x68;
 constexpr uint8_t REG_PWR_MGMT_1 = 0x6B;
 constexpr uint8_t REG_ACCEL_XOUT_H = 0x3B;
-constexpr float ESCALA_ACCEL_G = 16384.0f; // rango ±2 g
+constexpr uint8_t REG_ACCEL_CONFIG = 0x1C;
+constexpr float ESCALA_ACCEL_G = 4096.0f; // rango ±8 g
 constexpr float UMBRAL_IMPACTO_G = 2.5f;    // ajustar solo con pruebas controladas
 constexpr uint32_t INTERVALO_MINIMO_MS = 1500;
 float magnitudG = 1.0f;
@@ -36,7 +37,9 @@ bool iniciarSensorImpacto() {
   delay(50);
   Wire.beginTransmission(MPU6050_ADDR);
   if (Wire.endTransmission() != 0) return false;
-  return escribirRegistro(REG_PWR_MGMT_1, 0x00); // salir del modo sleep
+  if (!escribirRegistro(REG_PWR_MGMT_1, 0x00)) return false; // salir del modo sleep
+  delay(100);
+  return escribirRegistro(REG_ACCEL_CONFIG, 0x10); // rango de acelerómetro ±8 g
 }
 
 bool actualizarSensorImpacto() {
