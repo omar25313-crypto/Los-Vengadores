@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if __has_include("configuracion.h")
+#include "configuracion.h"
+#endif
+
 // UART GPS: ESP32 RX=16, TX=17. UART SIM800L: ESP32 RX=26, TX=27.
 // Cablear TX del módulo al RX del ESP32 y RX del módulo al TX del ESP32.
 // Confirmar pines con el montaje real antes de energizar.
