@@ -6,11 +6,6 @@ on:
     paths:
       - "casco_inteligente/**"
       - ".github/workflows/arduino-compile.yml"
-  push:
-    branches: [main]
-    paths:
-      - "casco_inteligente/**"
-      - ".github/workflows/arduino-compile.yml"
   workflow_dispatch:
 
 jobs:
