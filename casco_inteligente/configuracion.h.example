@@ -1,0 +1,7 @@
+#pragma once
+
+// Para habilitar SMS, copia este archivo como configuracion.h local.
+// NO subas configuracion.h al repositorio.
+// Confirma el número y autoriza pruebas antes de activar los SMS.
+#define ENABLE_SMS_ALERTS 0
+#define EMERGENCY_PHONE "+52XXXXXXXXXX"
