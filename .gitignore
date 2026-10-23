@@ -1,0 +1,17 @@
+# Arduino build artifacts
+build/
+*.hex
+*.elf
+*.bin
+*.o
+*.d
+
+# Local secrets / credentials
+arduino_secrets.h
+secrets.h
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
