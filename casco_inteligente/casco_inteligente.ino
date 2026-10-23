@@ -3,22 +3,21 @@
   Estado: demostración básica del botón y buzzer.
   No representa todavía una detección de impacto ni una alerta GPS/GSM validada.
 
-  Cableado provisional basado en los pines mencionados por el equipo:
+  Cableado provisional:
   - Buzzer: GPIO 32
-  - Botón: GPIO 25 conectado entre el pin y GND
+  - Botón: GPIO 25 conectado entre el pin y GND (INPUT_PULLUP)
 
-  Si el botón está cableado de otra forma, ajustar INPUT_PULLUP y la lógica.
-  Para buzzer pasivo se usa tone(); para buzzer activo puede ser necesario
-  usar digitalWrite() según el módulo.
+  Abrir la carpeta casco_inteligente en Arduino IDE y compilar para la placa ESP32
+  correspondiente. La compilación y las pruebas físicas aún deben confirmarse.
 */
 
-const int BUZZER_PIN = 32;
-const int BUTTON_PIN = 25;
+#include "alerta.h"
+
+constexpr uint8_t BUTTON_PIN = 25;
 
 void setup() {
-  pinMode(BUZZER_PIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
-  noTone(BUZZER_PIN);
+  iniciarAlerta();
 
   Serial.begin(115200);
   Serial.println("Casco inteligente: prueba inicial de boton y buzzer");
@@ -26,13 +25,6 @@ void setup() {
 
 void loop() {
   const bool buttonPressed = (digitalRead(BUTTON_PIN) == LOW);
-
-  if (buttonPressed) {
-    // Tono continuo mientras se mantenga presionado el botón.
-    tone(BUZZER_PIN, 2500);
-  } else {
-    noTone(BUZZER_PIN);
-  }
-
+  actualizarAlerta(buttonPressed);
   delay(10);
 }
