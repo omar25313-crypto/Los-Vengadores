@@ -15,3 +15,6 @@ secrets.h
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local configuration with emergency contact (never commit)
+casco_inteligente/configuracion.h
